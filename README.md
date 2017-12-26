@@ -1,6 +1,6 @@
 # Interactive MNIST Paint GUI
 
-This is a PoC of using Keras to build, train, save and put in into productiona model.
+This is a PoC of using Keras to build, train, save and put in into production a model.
 I'm just beginning with Machine Learning so probably this is not the best model.
 
 The interface offers a canvas square to draw numbers in and gives the predicted number within the scores for the rest of numbers.
