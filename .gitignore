@@ -1,3 +1,5 @@
 .directory
 .ropeproject
 __pycache__
+current.ong
+*.ps
