@@ -1,5 +1,6 @@
 .directory
 .ropeproject
 __pycache__
-current.ong
+current.png
+out.png
 *.ps

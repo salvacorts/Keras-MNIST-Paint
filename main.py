@@ -20,7 +20,6 @@ class Paint(object):
 
         self.model = Model()
 
-
         self.brush_button = Button(self.root, text='Predict', command=self.Predict)
         self.brush_button.grid(row=0, column=2)
 
@@ -104,12 +103,6 @@ class Paint(object):
         self.predictionScores.delete(1.0, END)
         self.c.delete("all")
         self.resizeAndSetImage(self.nnImageOriginal)
-
-    def activate_button(self, some_button, eraser_mode=False):
-        self.active_button.config(relief=RAISED)
-        some_button.config(relief=SUNKEN)
-        self.active_button = some_button
-        self.eraser_on = eraser_mode
 
     def paint(self, event):
         self.line_width = self.DEFAULT_PEN_SIZE
