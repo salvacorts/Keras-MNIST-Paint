@@ -4,9 +4,8 @@
 from tkinter import *
 from PIL import Image, ImageTk
 from modules.load import Model
-import modules.train as Trainer
 from threading import Thread
-import time
+import webbrowser
 
 
 class Paint(object):
@@ -49,22 +48,21 @@ class Paint(object):
         self.nnImageOriginal = Image.open("images/nn.png")
         self.resizeAndSetImage(self.nnImageOriginal)
 
-        self.author = Label(self.root, text="@salvacorts")
-        self.author.grid(row=3, column=6)
-
-        self.info = Text(self.root, fg="red", height=2, width=20, borderwidth=0,
-                            highlightthickness=0, relief='ridge')
-        self.info.grid(row=4, column=6)
-
-
-        self.trainButton = Button(self.root, fg="red", text="Train!", command=self.train)
-        self.trainButton.grid(row=5, column=6)
+        self.twitter = Label(self.root, text="@salvacorts", cursor="hand2")
+        self.twitter.bind("<Button-1>", self.openTwitter)
+        self.twitter.grid(row=4, column=6)
+        self.github = Label(self.root, text="github.com/salvacorts", cursor="hand2")
+        self.github.bind("<Button-1>", self.openGitHub)
+        self.github.grid(row=5, column=6)
 
         self.setup()
         self.root.mainloop()
 
-    def train(self):
-        Trainer.train()
+    def openTwitter(self, event):
+        webbrowser.open_new(r"https://twitter.com/salvacorts")
+
+    def openGitHub(self, event):
+        webbrowser.open_new(r"https://www.github.com/salvacorts")
 
     def resizeAndSetImage(self, image):
         size = (150, 150)
@@ -83,7 +81,7 @@ class Paint(object):
         self.c.bind('<ButtonRelease-1>', self.reset)
 
     def Predict(self):
-        self.c.postscript(file="tmp.ps")
+        self.c.postscript(file="images/tmp.ps")
         img = Image.open("images/tmp.ps")
         img.save("images/out.png", "png")
 
